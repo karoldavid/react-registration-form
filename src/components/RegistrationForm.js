@@ -15,14 +15,15 @@ class RegistrationForm extends Component {
 
 	render() {
 		const { handleSubmit, fields, errors } = this.props;
-		console.log(errors.accounts);
 		return (
 			<MuiThemeProvider>
 				<form onSubmit={handleSubmit(this.onFormSubmit)}>
 					<h1>Register Account</h1>
 					<FormFields fields={fields} />
 					<h2>Bank Accounts</h2>
-					<p>{errors.accounts ? errors.accounts._error : ""}</p>
+					<p style={{ color: "red" }}>
+						{errors.accounts ? errors.accounts._error : ""}
+					</p>
 
 					<FieldArraysForm />
 

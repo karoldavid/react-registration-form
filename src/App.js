@@ -7,7 +7,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <RegistrationForm fields={registerAccountFields}/>
+        <RegistrationForm fields={registerAccountFields} />
       </div>
     );
   }
