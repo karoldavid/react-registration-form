@@ -9,18 +9,21 @@ import FieldArraysForm from "./FieldArraysForm";
 class RegistrationForm extends Component {
 	onFormSubmit = params => {
 		console.log(params);
+		// dispatch sumbitData action and resetForm Data in callback
+		alert(JSON.stringify(params));
+		this.props.resetForm();
 	};
 
 	render() {
 		const { handleSubmit, fields, errors } = this.props;
-		console.log(errors.accounts)
+		console.log(errors.accounts);
 		return (
 			<MuiThemeProvider>
 				<form onSubmit={handleSubmit(this.onFormSubmit)}>
 					<h1>Register Account</h1>
 					<FormFields fields={fields} />
 					<h2>Bank Accounts</h2>
-					<p>{errors.accounts ? errors.accounts._error : "" }</p>
+					<p>{errors.accounts ? errors.accounts._error : ""}</p>
 
 					<FieldArraysForm />
 
@@ -39,7 +42,7 @@ class RegistrationForm extends Component {
 
 const mapStateToProps = state => {
 	return {
-		errors: getFormSyncErrors("registrationForm")(state),
+		errors: getFormSyncErrors("registrationForm")(state)
 	};
 };
 
