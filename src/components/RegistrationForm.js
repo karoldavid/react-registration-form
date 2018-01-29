@@ -9,9 +9,8 @@ import FieldArraysForm from "./FieldArraysForm";
 class RegistrationForm extends Component {
 	onFormSubmit = params => {
 		console.log(params);
-		// dispatch sumbitData action and resetForm Data in callback
 		alert(JSON.stringify(params));
-		this.props.resetForm();
+		// dispatch sumbitData action and resetForm Data in callback
 	};
 
 	render() {

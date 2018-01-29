@@ -1,3 +1,5 @@
+import IBAN from "iban";
+
 const containsOnlySmallAndCapitalLetters = value => {
 	return value.match(/^[a-zA-Z]+$/);
 };
@@ -51,8 +53,17 @@ export const validate = (values, props) => {
 				accountErrors.iban = "Required";
 				accountsArrayErrors[accountIndex] = accountErrors;
 			}
+
+			if (account && account.iban && !IBAN.isValid(account.iban)) {
+				accountErrors.iban = "Please enter a valid IBAN";
+				accountsArrayErrors[accountIndex] = accountErrors;
+			}
 			if (!account || !account.bankName) {
 				accountErrors.bankName = "Required";
+				accountsArrayErrors[accountIndex] = accountErrors;
+			}
+			if (account && account.bankName && account.bankName.length < 3) {
+				accountErrors.bankName = "Bank name can not be shorter than three characters";
 				accountsArrayErrors[accountIndex] = accountErrors;
 			}
 		});

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Field, FieldArray, reduxForm } from "redux-form";
+import { Field, FieldArray } from "redux-form";
 import { TextField, FlatButton } from "material-ui";
 
 const renderTextField = ({
@@ -28,7 +28,6 @@ const renderAccounts = ({ fields, meta: { touched, error } }) => (
             component={renderTextField}
             label="IBAN"
           />
-          <FlatButton primary label="-" onClick={() => fields.remove(index)} />
         </div>
         <div>
           <Field
@@ -38,6 +37,11 @@ const renderAccounts = ({ fields, meta: { touched, error } }) => (
             label="Bank name"
           />
         </div>
+        <FlatButton
+          secondary
+          label="- Remove bank account"
+          onClick={() => fields.remove(index)}
+        />
       </li>
     ))}
     <li>
