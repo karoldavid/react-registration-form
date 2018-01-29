@@ -28,11 +28,7 @@ const renderAccounts = ({ fields, meta: { touched, error } }) => (
             component={renderTextField}
             label="IBAN"
           />
-          <FlatButton
-            primary
-            label="-"
-            onClick={() => fields.remove(index)}
-          />
+          <FlatButton primary label="-" onClick={() => fields.remove(index)} />
         </div>
         <div>
           <Field

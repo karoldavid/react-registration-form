@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { reduxForm } from "redux-form";
+import { getFormSyncErrors, reduxForm } from "redux-form";
 import FormFields from "./FormFields";
 import { MuiThemeProvider, RaisedButton } from "material-ui";
 import { validate } from "../utils/helpers";
@@ -12,13 +12,16 @@ class RegistrationForm extends Component {
 	};
 
 	render() {
-		const { handleSubmit, fields } = this.props;
+		const { handleSubmit, fields, errors } = this.props;
+		console.log(errors.accounts)
 		return (
 			<MuiThemeProvider>
 				<form onSubmit={handleSubmit(this.onFormSubmit)}>
 					<h1>Register Account</h1>
 					<FormFields fields={fields} />
 					<h2>Bank Accounts</h2>
+					<p>{errors.accounts ? errors.accounts._error : "" }</p>
+
 					<FieldArraysForm />
 
 					<RaisedButton
@@ -34,7 +37,13 @@ class RegistrationForm extends Component {
 	}
 }
 
+const mapStateToProps = state => {
+	return {
+		errors: getFormSyncErrors("registrationForm")(state),
+	};
+};
+
 export default reduxForm({
 	form: "registrationForm",
 	validate
-})(connect()(RegistrationForm));
+})(connect(mapStateToProps)(RegistrationForm));
