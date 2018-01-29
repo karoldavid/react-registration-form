@@ -4,9 +4,17 @@ import { getFormSyncErrors, reduxForm } from "redux-form";
 import FormFields from "./FormFields";
 import { MuiThemeProvider, RaisedButton } from "material-ui";
 import { validate } from "../utils/helpers";
-import FieldArraysForm from "./FieldArraysForm";
+import { FieldArraysForm } from "./FieldArraysForm";
 
 class RegistrationForm extends Component {
+	state = {
+		submit: false
+	};
+
+	onSubmitClick = () => {
+		this.setState({ submit: true });
+	};
+
 	onFormSubmit = params => {
 		console.log(params);
 		alert(JSON.stringify(params));
@@ -17,12 +25,16 @@ class RegistrationForm extends Component {
 		const { handleSubmit, fields, errors } = this.props;
 		return (
 			<MuiThemeProvider>
-				<form onSubmit={handleSubmit(this.onFormSubmit)}>
+				<form
+					onSubmit={handleSubmit(this.onFormSubmit)}
+				>
 					<h1>Register Account</h1>
 					<FormFields fields={fields} />
 					<h2>Bank Accounts</h2>
 					<p style={{ color: "red" }}>
-						{errors.accounts ? errors.accounts._error : ""}
+						{errors.accounts && this.state.submit
+							? errors.accounts._error
+							: ""}
 					</p>
 
 					<FieldArraysForm />
@@ -33,6 +45,7 @@ class RegistrationForm extends Component {
 						type="submit"
 						label="Submit"
 						className={"submit-button"}
+						onClick={this.onSubmitClick}
 					/>
 				</form>
 			</MuiThemeProvider>

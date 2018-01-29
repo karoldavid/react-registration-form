@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Field, FieldArray } from "redux-form";
 import { TextField, FlatButton } from "material-ui";
 
@@ -55,8 +55,6 @@ const renderAccounts = ({ fields, meta: { touched, error } }) => (
   </ul>
 );
 
-export default class FieldArraysForm extends Component {
-  render() {
-    return <FieldArray name="accounts" component={renderAccounts} />;
-  }
-}
+export const FieldArraysForm = () => {
+  return <FieldArray name="accounts" component={renderAccounts} />;
+};
