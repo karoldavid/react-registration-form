@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { reduxForm } from "redux-form";
+import FormFields from "./FormFields";
+import { registerAccountFields } from "../utils/fields";
+import { MuiThemeProvider } from "material-ui";
 
 class RegistrationForm extends Component {
 	onFormSubmit = params => {
@@ -10,10 +13,12 @@ class RegistrationForm extends Component {
 	render() {
 		const { handleSubmit } = this.props;
 		return (
-			<div>
-				<h1>Register Account</h1>
-				<form onSubmit={handleSubmit(this.onFormSubmit)} />
-			</div>
+			<MuiThemeProvider>
+				<form onSubmit={handleSubmit(this.onFormSubmit)}>
+					<h1>Register Account</h1>
+					<FormFields fields={registerAccountFields} />
+				</form>
+			</MuiThemeProvider>
 		);
 	}
 }
