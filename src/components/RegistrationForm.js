@@ -17,12 +17,14 @@ class RegistrationForm extends Component {
 
 	onFormSubmit = params => {
 		console.log(params);
-		alert(JSON.stringify(params));
+		alert(`Form Data: ${JSON.stringify(params)}`);
 		// dispatch sumbitData action and resetForm Data in callback
+		this.props.reset();
 	};
 
 	render() {
 		const { handleSubmit, fields, errors } = this.props;
+
 		return (
 			<MuiThemeProvider>
 				<form
