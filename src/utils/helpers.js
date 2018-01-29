@@ -50,7 +50,7 @@ export const validate = (values, props) => {
 		values.accounts.forEach((account, accountIndex) => {
 			const accountErrors = {};
 			if (!account || !account.iban) {
-				accountErrors.iban = "Required";
+				accountErrors.iban = "IBAN is required";
 				accountsArrayErrors[accountIndex] = accountErrors;
 			}
 
@@ -59,7 +59,7 @@ export const validate = (values, props) => {
 				accountsArrayErrors[accountIndex] = accountErrors;
 			}
 			if (!account || !account.bankName) {
-				accountErrors.bankName = "Required";
+				accountErrors.bankName = "Bank name is required";
 				accountsArrayErrors[accountIndex] = accountErrors;
 			}
 			if (account && account.bankName && account.bankName.length < 3) {
