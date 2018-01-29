@@ -4,6 +4,7 @@ import { reduxForm } from "redux-form";
 import FormFields from "./FormFields";
 import { MuiThemeProvider, RaisedButton } from "material-ui";
 import { validate } from "../utils/helpers";
+import FieldArraysForm from "./FieldArraysForm";
 
 class RegistrationForm extends Component {
 	onFormSubmit = params => {
@@ -17,6 +18,8 @@ class RegistrationForm extends Component {
 				<form onSubmit={handleSubmit(this.onFormSubmit)}>
 					<h1>Register Account</h1>
 					<FormFields fields={fields} />
+					<h2>Bank Accounts</h2>
+					<FieldArraysForm />
 
 					<RaisedButton
 						primary
