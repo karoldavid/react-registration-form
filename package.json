@@ -1,22 +1,27 @@
 {
-  "name": "registration-form",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "iban": "0.0.8",
-    "material-ui": "^0.20.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-redux": "^5.0.6",
-    "react-scripts": "1.1.0",
-    "redux": "^3.7.2",
-    "redux-form": "^7.2.1",
-    "redux-thunk": "^2.2.0"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
+	"name": "registration-form",
+	"version": "0.1.0",
+	"private": true,
+	"homepage": "https://karoldavid.github.io/react-registration-form/",
+	"dependencies": {
+		"iban": "0.0.8",
+		"material-ui": "^0.20.0",
+		"react": "^16.2.0",
+		"react-dom": "^16.2.0",
+		"react-redux": "^5.0.6",
+		"react-scripts": "1.1.0",
+		"redux": "^3.7.2",
+		"redux-form": "^7.2.1",
+		"redux-thunk": "^2.2.0"
+	},
+	"scripts": {
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"deploy": "gh-pages -d build",
+		"test": "react-scripts test --env=jsdom",
+		"eject": "react-scripts eject"
+	},
+	"devDependencies": {
+		"gh-pages": "^1.1.0"
+	}
 }
