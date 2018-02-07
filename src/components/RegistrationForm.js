@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getFormSyncErrors, reduxForm } from "redux-form";
 import FormFields from "./FormFields";
-import { MuiThemeProvider, RaisedButton } from "material-ui";
+import { MuiThemeProvider, Card, RaisedButton } from "material-ui";
 import { validate } from "../utils/helpers";
 import { FieldArraysForm } from "./FieldArraysForm";
 
@@ -27,29 +27,50 @@ class RegistrationForm extends Component {
 
 		return (
 			<MuiThemeProvider>
-				<form
-					onSubmit={handleSubmit(this.onFormSubmit)}
+				<div
+					style={{
+						display: "flex",
+						justifyContent: "center"
+					}}
 				>
-					<h1>Register Account</h1>
-					<FormFields fields={fields} />
-					<h2>Bank Accounts</h2>
-					<p style={{ color: "red" }}>
-						{errors.accounts && this.state.submit
-							? errors.accounts._error
-							: ""}
-					</p>
+					<Card
+						style={{
+							display: "flex",
+							justifyContent: "center",
+							width: "40vw",
+							marginTop: 25
+						}}
+					>
+						<form onSubmit={handleSubmit(this.onFormSubmit)}>
+							<h1>Register Account</h1>
+							<FormFields fields={fields} />
+							<h2>Bank Accounts</h2>
+							<p style={{ color: "red" }}>
+								{errors.accounts && this.state.submit
+									? errors.accounts._error
+									: ""}
+							</p>
 
-					<FieldArraysForm />
-
-					<RaisedButton
-						primary
-						labelColor="#FFFFFF"
-						type="submit"
-						label="Submit"
-						className={"submit-button"}
-						onClick={this.onSubmitClick}
-					/>
-				</form>
+							<FieldArraysForm />
+							<div
+								style={{
+									display: "flex",
+									justifyContent: "flex-end",
+								}}
+							>
+								<RaisedButton 
+									style={{ marginBottom: 20}}
+									primary
+									labelColor="#FFFFFF"
+									type="submit"
+									label="Submit"
+									className={"submit-button"}
+									onClick={this.onSubmitClick}
+								/>
+							</div>
+						</form>
+					</Card>
+				</div>
 			</MuiThemeProvider>
 		);
 	}

@@ -1,6 +1,8 @@
 import React from "react";
 import { Field, FieldArray } from "redux-form";
 import { TextField, FlatButton } from "material-ui";
+import IconButton from 'material-ui/IconButton';
+import Delete from "material-ui/svg-icons/action/delete";
 
 const renderTextField = ({
   input,
@@ -23,33 +25,37 @@ const renderAccounts = ({ fields, meta: { touched, error } }) => (
       <li key={index}>
         <div>
           <Field
+            style={{ width: 400 }}
             name={`${account}.iban`}
             type="text"
             component={renderTextField}
             label="IBAN"
           />
+          <FlatButton
+            secondary
+            label="-"
+            onClick={() => fields.remove(index)}
+          />
         </div>
         <div>
           <Field
+            style={{ width: 400 }}
             name={`${account}.bankName`}
             type="text"
             component={renderTextField}
             label="Bank name"
           />
         </div>
-        <FlatButton
-          secondary
-          label="- Remove bank account"
-          onClick={() => fields.remove(index)}
-        />
       </li>
     ))}
     <li>
-      <FlatButton
-        primary
-        label="+ Add bank account"
-        onClick={() => fields.push({})}
-      />
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <FlatButton
+          primary
+          label="+ Add bank account"
+          onClick={() => fields.push({})}
+        />
+      </div>
       {touched && error && <span>{error}</span>}
     </li>
   </ul>
