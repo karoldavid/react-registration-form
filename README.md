@@ -2,6 +2,8 @@
 
 This is a dynamic registration form where the user can regiser and submit bank accounts. Here is a link to the live version: https://karoldavid.github.io/react-registration-form/
 
+![Image Registration Form](src/img/registration-form.jpg)
+
 ## Getting Started
 
 ### Prerequisites
