@@ -1,7 +1,7 @@
 import React from "react";
 import { Field, FieldArray } from "redux-form";
 import { TextField, FlatButton } from "material-ui";
-import IconButton from 'material-ui/IconButton';
+import IconButton from "material-ui/IconButton";
 import Delete from "material-ui/svg-icons/action/delete";
 
 const renderTextField = ({
@@ -31,11 +31,10 @@ const renderAccounts = ({ fields, meta: { touched, error } }) => (
             component={renderTextField}
             label="IBAN"
           />
-          <FlatButton
-            secondary
-            label="-"
-            onClick={() => fields.remove(index)}
-          />
+
+          <IconButton iconStyle={{ color: "red" }} onClick={() => fields.remove(index)}>
+            <Delete />
+          </IconButton>
         </div>
         <div>
           <Field
